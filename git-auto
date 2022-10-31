@@ -62,6 +62,7 @@ get-commit-message() {
 }
 
 auto-commit-and-push() {
+  git pull
   if ! [[ $(git status) =~ "working tree clean" ]]; then
     git add .
     git commit -m "$(get-commit-message)"
