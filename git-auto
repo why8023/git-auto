@@ -57,7 +57,7 @@ fi
 
 get-commit-message() {
     local commit_message=$(git diff --name-only HEAD~1..HEAD)
-    commit_message=$(echo "${commit_message}" | sed -e 's/^.*\///')
+    # commit_message=$(echo "${commit_message}" | sed -e 's/^.*\///')
     echo "${commit_message}"
 }
 
@@ -65,7 +65,7 @@ auto-commit-and-push() {
   git pull
   if ! [[ $(git status) =~ "working tree clean" ]]; then
     git add .
-    git commit -m "$(get-commit-message)"
+    git commit -m "Auto saved by git-auto"
 
     if [[ 1 == ${rebase} ]]; then
       git pull --rebase
